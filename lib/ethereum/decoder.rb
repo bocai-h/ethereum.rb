@@ -74,7 +74,7 @@ module Ethereum
       data = data.gsub(/^0x/,'')
       types = arguments.map do |o| 
         if o.type == "tuple"
-          o.components.map{|o| o[:type]}
+          o.components.map{|o| o["type"]}
         else
           o.type
         end
