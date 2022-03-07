@@ -22,7 +22,7 @@ module Ethereum
     def decode_dynamic_array(array_subtype, value, start)
       location = decode_uint(value[start..(start+63)]) * 2
       size = decode_uint(value[location..location+63])
-      (0..size-1).map { |i| decode(array_subtype, value, location + (i+1) * 64) }
+      (0..size-1).map { |i| decode(array_subtype, value[location+64..-1], i * 64) }
     end
 
     def decode_fixed(value, subtype = "128x128", start = 0)
